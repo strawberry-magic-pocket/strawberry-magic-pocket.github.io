@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Markdown语法规则 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/Tong1.png"></a></div>
+    <span>2019-08-20</span>
+    <h2>Markdown语法规则</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/test/">test</a></div>
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="Markdown-语法说明"><a href="#Markdown-语法说明" class="headerlink" title="Markdown 语法说明"></a>Markdown 语法说明</h1><h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><ul>
+<li>使用 # 控制</li>
+<li>几个 # 代表几级标题</li>
+<li>#与文字之间有空格</li>
+</ul>
+<h2 id="二、强调"><a href="#二、强调" class="headerlink" title="二、强调"></a>二、强调</h2><h4 id="1-加粗"><a href="#1-加粗" class="headerlink" title="1. 加粗"></a>1. 加粗</h4><p>在要加粗的字段两侧添加 **<br>这里<strong>加粗强调</strong></p>
+<h4 id="2-斜体"><a href="#2-斜体" class="headerlink" title="2. 斜体"></a>2. 斜体</h4><p>在要加斜体的字段两侧添加 *<br>这里需要<em>加斜体强调</em></p>
+<h4 id="3-加粗斜体"><a href="#3-加粗斜体" class="headerlink" title="3. 加粗斜体"></a>3. 加粗斜体</h4><p>在字段两侧添加<strong>*<br>这里需要 *</strong>加粗并斜体***</p>
+<h4 id="4-删除"><a href="#4-删除" class="headerlink" title="4.删除"></a>4.删除</h4><p>在要删除的字段两侧添加 <del>~<br>~</del>这句话需要删除~~</p>
+<h2 id="三、列表"><a href="#三、列表" class="headerlink" title="三、列表"></a>三、列表</h2><h3 id="1、无序列表"><a href="#1、无序列表" class="headerlink" title="1、无序列表"></a>1、无序列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 项目1</span><br><span class="line">* 项目2</span><br><span class="line">  * 项目2.1</span><br><span class="line">  * 项目2.2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>项目1</li>
+<li>项目2<ul>
+<li>项目2.1</li>
+<li>项目2.2</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、有序列表"><a href="#2、有序列表" class="headerlink" title="2、有序列表"></a>2、有序列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 项目1</span><br><span class="line">1. 项目2</span><br><span class="line">1. 项目3</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>项目1</li>
+<li>项目2</li>
+<li>项目3<ol>
+<li>项目3.1</li>
+<li>项目3.2</li>
+</ol>
+</li>
+</ol>
+<h2 id="四、添加图片"><a href="#四、添加图片" class="headerlink" title="四、添加图片"></a>四、添加图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">![](url)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Users/mujing/Desktop/test.png" alt></p>
+<h2 id="五、链接"><a href="#五、链接" class="headerlink" title="五、链接"></a>五、链接</h2><ul>
+<li><p>可以直接输入网址<br><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></p>
+</li>
+<li><p>可以为网址重命名</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[name](url)</span><br></pre></td></tr></table></figure>
+
+<p>  <a href="http://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
+</li>
+</ul>
+<h2 id="六、引用"><a href="#六、引用" class="headerlink" title="六、引用"></a>六、引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">俗话说：</span><br><span class="line">&gt; 各扫自家门前雪</span><br><span class="line">&gt; 休管他人瓦上霜</span><br></pre></td></tr></table></figure>
+
+<p>俗话说：</p>
+<blockquote>
+<p>各扫自家门前雪<br>休管他人瓦上霜</p>
+</blockquote>
+<h2 id="七、分割线"><a href="#七、分割线" class="headerlink" title="七、分割线"></a>七、分割线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、行内代码"><a href="#八、行内代码" class="headerlink" title="八、行内代码"></a>八、行内代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;&gt;`</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、代码块"><a href="#九、代码块" class="headerlink" title="九、代码块"></a>九、代码块</h2><h4 id="9-1-语法高亮"><a href="#9-1-语法高亮" class="headerlink" title="9.1 语法高亮"></a>9.1 语法高亮</h4><p>添加使用的代码的语言类别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">list = [<span class="string">'I'</span>,<span class="string">'Love'</span>,<span class="string">'U'</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-2-显示代码行数"><a href="#9-2-显示代码行数" class="headerlink" title="9.2 显示代码行数"></a>9.2 显示代码行数</h4><p>在语言类别后添加{.line-numbers}</p>
+<figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">list = [<span class="string">'I'</span>,<span class="string">'Love'</span>,<span class="string">'U'</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、待办事项"><a href="#十、待办事项" class="headerlink" title="十、待办事项"></a>十、待办事项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 阅读文献</span><br><span class="line">- [x] 整理笔记</span><br></pre></td></tr></table></figure>
+
+<p>[ ] 阅读文献<br>[x] 整理笔记</p>
+<h2 id="十一、表格"><a href="#十一、表格" class="headerlink" title="十一、表格"></a>十一、表格</h2><table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00</td>
+<td>01</td>
+</tr>
+<tr>
+<td>10</td>
+<td>11</td>
+</tr>
+</tbody></table>
+<h2 id="十二、标注"><a href="#十二、标注" class="headerlink" title="十二、标注"></a>十二、标注</h2><ul>
+<li><strong>上标<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在上标的两侧添加^</span><br><span class="line">30^th^</span><br></pre></td></tr></table></figure>
+
+</strong></li>
+</ul>
+<p>30^th</p>
+<ul>
+<li><strong>下标<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在要下标的两侧添加~</span><br><span class="line">H_2O</span><br></pre></td></tr></table></figure>
+
+</strong></li>
+</ul>
+<p>H_2O 、CO_3</p>
+<ul>
+<li><strong>脚注<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^1]</span><br></pre></td></tr></table></figure>
+
+</strong></li>
+</ul>
+<p>[^1]: Hi, nice to meet you.</p>
+<ul>
+<li><strong>高亮<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在需要高亮的字符两侧添加==</span><br></pre></td></tr></table></figure>
+
+</strong></li>
+</ul>
+<p>==marked==</p>
+<blockquote class="pullquote left"><p>Loremdnadkda jdakjd daksdn </p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/05/hello-world/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Hello World</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+</body>
+</html>
