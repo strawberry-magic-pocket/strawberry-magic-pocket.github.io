@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>实战k-近邻算法 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
+    <span>2019-08-25</span>
+    <h2>实战k-近邻算法</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/ML/">ML</a></div>
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <ul>
+<li>介绍什么是k-近邻算法</li>
+<li>每一个函数的作用及包含的Python语法</li>
+<li>记录程序调试和运行结果<a id="more"></a>
+
+</li>
+</ul>
+<h1 id="一、什么是k-近邻算法"><a href="#一、什么是k-近邻算法" class="headerlink" title="一、什么是k-近邻算法"></a>一、什么是k-近邻算法</h1><p>计算测试样本与训练样本集中每个实例之间的距离，从小到大排序后取前k个实例，通过查看前k个实例的类别百分比确定测试样本的类别。</p>
+<a class="btn" href="#url" title="title">优点</a> 
+<pre><code>精度高，对异常值不敏感，无数据输入假定。</code></pre>{%btn #url,缺点,,title%}
+<pre><code>计算复杂度高，空间复杂度高</code></pre><a class="btn" href="#url" title="title">适用范围</a>
+<pre><code>数值型、标称型</code></pre><div class="note info">
+            <h3 id="标称型"><a href="#标称型" class="headerlink" title="标称型"></a>标称型</h3><p>在有限的数据中取值，例如，bool型（包含True和False）、枚举型</p>
+          </div>
+
+<h1 id="二、代码分析"><a href="#二、代码分析" class="headerlink" title="二、代码分析"></a>二、代码分析</h1><h2 id="2-1-使用Python导入数据"><a href="#2-1-使用Python导入数据" class="headerlink" title="2.1 使用Python导入数据"></a>2.1 使用Python导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">creatDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    group = array([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1.1</span>],[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0.1</span>]])</span><br><span class="line">    labels = [<span class="string">'A'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'B'</span>]</span><br><span class="line">    <span class="keyword">return</span> group, labels</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引入了两个模块，Numpy便于进行数据处理；operator运算符模块。</li>
+</ul>
+<h2 id="2-2-kNN算法"><a href="#2-2-kNN算法" class="headerlink" title="2.2 kNN算法"></a>2.2 kNN算法</h2><h3 id><a href="#" class="headerlink" title></a><span class="label success">伪代码</span></h3><p>对未知类别属性的数据集中的每个点依次执行：</p>
+<ol>
+<li>计算已知类别数据集中的点与当前点之间的距离；</li>
+<li>按照距离递增次序排序；</li>
+<li>选取与当前点距离最小的k个点；</li>
+<li>确定前k个点所在类别的出现频率</li>
+<li>返回前k个点出现频率最高的类别作为当前点的预测分类</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>输入：inX    –  用于分类的输入向量<br>&emsp;&emsp;dataSet–  输入训练样本集<br>&emsp;&emsp;     labels –  输入训练样本类别<br>&emsp;&emsp;     k      –  选择的最近邻点数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify0</span><span class="params">(inX, dataSet, labels, k)</span>:</span></span><br><span class="line">    <span class="comment"># 计算距离</span></span><br><span class="line">    dataSetSize = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    diffMat = tile(inX, (dataSetSize,<span class="number">1</span>)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**<span class="number">2</span></span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=<span class="number">1</span>)</span><br><span class="line">    distances = sqDistances**<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 选择距离最小的k个点</span></span><br><span class="line">    sortedDistIndicies = distances.argsort()  <span class="comment"># 返回数组值从小到大的索引值</span></span><br><span class="line">    classCount = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]</span><br><span class="line">        <span class="comment">#get的用法 get(key,default)</span></span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,<span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <h3 id="tile"><a href="#tile" class="headerlink" title="tile()"></a>tile()</h3><p>numpy.tile(A, reps): A 为待输入数组，reps决定了A重复的次数。</p>
+          </div>
+<div class="note info">
+            <h3 id="sum"><a href="#sum" class="headerlink" title="sum()"></a>sum()</h3><p>axis = 0，按列相加；axis = 1，按行相加</p>
+          </div>
+<div class="note info">
+            <h3 id="argsort"><a href="#argsort" class="headerlink" title="argsort()"></a>argsort()</h3><p>返回数组值从小到大的索引值</p>
+          </div>
+<div class="note info">
+            <h3 id="dict-get"><a href="#dict-get" class="headerlink" title="dict.get()"></a>dict.get()</h3><p>dict.get(key,default=None) , 返回指定键的值，若值不存在则返回默认值。</p>
+          </div>
+<div class="note info">
+            <h3 id="dict-items"><a href="#dict-items" class="headerlink" title="dict.items()"></a>dict.items()</h3><p>返回可遍历的元组数组。</p>undefined
+          </div>
+<div class="note info">
+            <h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a>sorted()</h3><p>sorted(iterable, cmp=None, key=None, reverse=False)<br>iterable – 可迭代对象<br>cmp – 比较函数<br>key – 用来进行比较的元素，只有一个参数，具体的函数的参数应取自可迭代对象中，指定可迭代对象中的一个元素来进行排序<br>reverse – 指定排序规则，reverse=True 降序， reverse=False 升序（默认）</p>
+          </div>
+<div class="note info">
+            <h3 id="operator-itemgetter"><a href="#operator-itemgetter" class="headerlink" title="operator.itemgetter()"></a>operator.itemgetter()</h3><p>用于获取对象指定维的数据。<br>sorted(iterable, key = operator.itemgetter(1)) 即根据对象的第二维进行排序。</p>
+          </div>
+
+<h2 id="2-3-如何测试分类器"><a href="#2-3-如何测试分类器" class="headerlink" title="2.3 如何测试分类器"></a>2.3 如何测试分类器</h2><p><strong>错误率<strong>：分类器给出错误结果的次数/测试执行的总次数<br>常用来评估分类器在某个数据集上的执行效果。</strong></strong></p>
+<h1 id="三、实例：使用k-近邻算法改进约会网站的配对效果"><a href="#三、实例：使用k-近邻算法改进约会网站的配对效果" class="headerlink" title="三、实例：使用k-近邻算法改进约会网站的配对效果"></a>三、实例：使用k-近邻算法改进约会网站的配对效果</h1><h2 id="3-1-将文本数据转换为Numpy的解析程序"><a href="#3-1-将文本数据转换为Numpy的解析程序" class="headerlink" title="3.1 将文本数据转换为Numpy的解析程序"></a>3.1 将文本数据转换为Numpy的解析程序</h2><p><strong>返回值：<br>&emsp;returnMat – 特征矩阵<br>&emsp;classLabelVector – 类别向量</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file2matrix</span><span class="params">(filename)</span>:</span></span><br><span class="line">    fr = open(filename)</span><br><span class="line">    arrayOLines = fr.readlines()</span><br><span class="line">    numberOfLines = len(arrayLines)</span><br><span class="line">    returnMat = zeros((numberOfLines,<span class="number">3</span>))</span><br><span class="line">    classLabelVector = []</span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> arrayOLines:</span><br><span class="line">        line = line.strip()</span><br><span class="line">        listFromLine = line.split(<span class="string">'\t'</span>)</span><br><span class="line">        returnMat[index,:] = listFromLine[<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line">        classLabelVector.append(int(listFromLine[<span class="number">-1</span>]))</span><br><span class="line">        index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> returnMat, classLabelVector</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p>open(filenam):打开指定的文件<br>readlines():按行读取文本<br>strip():删除开头和结尾的空格与换行符<br>str.split(str=””,num= :根据指定的分隔符对字符串进行切片，如果参数num有指定值，则分隔num+1个字符串。<br>&emsp;&emsp; str – 分隔符，默认为所有空字符，包含空格、换行（\n）、制表(\t)<br>&emsp;&emsp; num – 分割次数，默认为-1，即分隔所有。</p>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/21/xcode/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Xcode</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        <li> <a href="https://hexo.io/zh-cn/docs/" target="_blank">Hexo_doc</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
