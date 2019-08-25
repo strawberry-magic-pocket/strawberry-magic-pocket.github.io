@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Xcode]]></title>
+    <url>%2F2019%2F08%2F21%2Fxcode%2F</url>
+    <content type="text"><![CDATA[记录使用Xcode过程中遇到的一些坑 一、相对路径问题 ###配置过程Product —&gt;Scheme —&gt;Edit Scheme —&gt;Options —&gt; Working Directory —&gt;勾选Use custom working directory:并选择工程路径]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Study-Review-1]]></title>
+    <url>%2F2019%2F08%2F21%2Fimge_process%2F</url>
+    <content type="text"><![CDATA[学习知乎专栏《动手学计算机视觉》，记录学习过程中踩的坑。项目所在文件夹 test_opencv0821 Part1 图像去噪noise.py 一、解决问题1.1 Pycharm 报错 “No module named…”这里提出一个问题，即如何在Pycharm中使用Anaconda部署Python环境 理解几个概念： Python脚本：即.py文件 Python解释器：python.exe ，不同版本的解释器对语法的要求是不同的 Python运行环境：由解释器的版本和第三方库决定 Anaconda的优点： Anaconda可以很方便地管理第三方库，方便管理； 可以创建不同版本的python开发环境，隔离不同的项目要求。 如何在Pycharm中设置Anaconda环境 配置过程打开Pycharm—&gt; Create New Project—&gt; Project Interpreter—&gt; Existing interpreter—&gt; Interpreter—&gt;&gt; …—&gt; Conda Environment —&gt;&gt; users—&gt; anaconda3 —&gt; bin—&gt; python X.X]]></content>
+      <tags>
+        <tag>CV</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Markdown语法规则]]></title>
     <url>%2F2019%2F08%2F20%2Fmarkdown%2F</url>
     <content type="text"><![CDATA[Markdown 语法说明 一、标题 使用 # 控制 几个 # 代表几级标题 #与文字之间有空格 二、强调1. 加粗在要加粗的字段两侧添加 **这里加粗强调 2. 斜体在要加斜体的字段两侧添加 *这里需要加斜体强调 3. 加粗斜体在字段两侧添加*这里需要 *加粗并斜体*** 4.删除在要删除的字段两侧添加 ~~这句话需要删除~~ 三、列表1、无序列表1234* 项目1* 项目2 * 项目2.1 * 项目2.2 项目1 项目2 项目2.1 项目2.2 2、有序列表1231. 项目11. 项目21. 项目3 项目1 项目2 项目3 项目3.1 项目3.2 四、添加图片 五、链接 可以直接输入网址http://www.baidu.com 可以为网址重命名 1[name](url) 百度 六、引用123俗话说：&gt; 各扫自家门前雪&gt; 休管他人瓦上霜 俗话说： 各扫自家门前雪休管他人瓦上霜 七、分割线1--- 八、行内代码1`&lt;&gt;` 九、代码块9.1 语法高亮添加使用的代码的语言类别 12import numpy as nplist = ['I','Love','U'] 9.2 显示代码行数在语言类别后添加{.line-numbers} &#123;.line-numbers&#125;12import numpy as nplist = ['I','Love','U'] 十、待办事项12- [ ] 阅读文献- [x] 整理笔记 [ ] 阅读文献[x] 整理笔记 十一、表格 First Header Second Header 00 01 10 11 十二、标注 上标12在上标的两侧添加^30^th^ 30^th 下标12在要下标的两侧添加~H_2O H_2O 、CO_3 脚注1[^1] [^1]: Hi, nice to meet you. 高亮1在需要高亮的字符两侧添加== ==marked== Loremdnadkda jdakjd daksdn]]></content>
