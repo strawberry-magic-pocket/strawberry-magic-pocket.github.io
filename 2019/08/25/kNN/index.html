@@ -138,15 +138,14 @@
             <h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p>open(filenam):打开指定的文件<br>readlines():按行读取文本<br>strip():删除开头和结尾的空格与换行符<br>str.split(str=””,num= :根据指定的分隔符对字符串进行切片，如果参数num有指定值，则分隔num+1个字符串。<br>&emsp;&emsp; str – 分隔符，默认为所有空字符，包含空格、换行（\n）、制表(\t)<br>&emsp;&emsp; num – 分割次数，默认为-1，即分隔所有。</p>
           </div>
 
+<h2 id="3-2-分析数据：使用Matplotlib绘制散点图"><a href="#3-2-分析数据：使用Matplotlib绘制散点图" class="headerlink" title="3.2 分析数据：使用Matplotlib绘制散点图"></a>3.2 分析数据：使用Matplotlib绘制散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">ax.scatter(datingDataMat[:,<span class="number">1</span>], datingDataMat[:,<span class="number">2</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
+<div class="note info">
+            <h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p>matplotlib.pyplot.scatter(x,y,s,c,marker,cmap)<br>&emsp;x,y – 坐标数据<br>&emsp;s – 数据点的大小<br>&emsp;c – 数据点的颜色<br>&emsp;marker – 数据点的样式<br>&emsp;cmap – 颜色映射</p>
+          </div>
 
-
-
-
-
-
-
-
+<h2 id="3-3-准备数据：归一化数值"><a href="#3-3-准备数据：归一化数值" class="headerlink" title="3.3 准备数据：归一化数值"></a>3.3 准备数据：归一化数值</h2><p>归一化公式 normValue = (value - minvalue)/(maxvalue-minvalue)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">autoNorm</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    minValues = dataSet.min(<span class="number">0</span>)</span><br><span class="line">    maxValues = dataSet.max(<span class="number">0</span>)</span><br><span class="line">    ranges = maxValues - minValues</span><br><span class="line">    normDataSet = zeros(shape(dataSet))</span><br><span class="line">    m = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    normDataSet = dataSet - tile(minValues,(m,<span class="number">1</span>))</span><br><span class="line">    normDataSet = dataSet/tile(ranges,(m,<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> normDataSet, ranges, minValues</span><br></pre></td></tr></table></figure>
 
 
       </div>
@@ -189,6 +188,8 @@
   </div>
 </footer>
 </div>
+
+
 <a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
 <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">

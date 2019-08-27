@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Hello World | Gina&#39;s Blog</title>
+  <title>使用Pycharm过程中遇到的问题 | Gina&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Gina Mu">
   <meta name="keywords" content>
@@ -65,9 +65,9 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
-    <span>2019-08-05</span>
-    <h2>Hello World</h2>
-    
+    <span>2019-08-21</span>
+    <h2>使用Pycharm过程中遇到的问题</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/python/">python</a></div>
     <div class="social-links">
 <a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
 </div></div>
@@ -77,19 +77,31 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>记录在使用Pycharm时，遇到的一些问题。</p>
+<a id="more"></a>
+<h2 id="一、解决问题"><a href="#一、解决问题" class="headerlink" title="一、解决问题"></a>一、解决问题</h2><h3 id="1-1-Pycharm-报错-“No-module-named…”"><a href="#1-1-Pycharm-报错-“No-module-named…”" class="headerlink" title="1.1 Pycharm 报错 “No module named…”"></a><strong>1.1 Pycharm 报错 “No module named…”</strong></h3><p>这里提出一个问题，即<strong>如何在Pycharm中使用Anaconda部署Python环境</strong></p>
+<ul>
+<li><p>理解几个概念：</p>
+<ul>
+<li>Python脚本：即.py文件</li>
+<li>Python解释器：python.exe ，不同版本的解释器对语法的要求是不同的</li>
+<li>Python运行环境：由解释器的版本和第三方库决定</li>
+</ul>
+</li>
+<li><p>Anaconda的优点：</p>
+<ul>
+<li>Anaconda可以很方便地管理第三方库，方便管理；</li>
+<li>可以创建不同版本的python开发环境，隔离不同的项目要求。</li>
+</ul>
+</li>
+<li><p>如何在Pycharm中设置Anaconda环境</p>
+<div class="note success">
+            <h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><p>打开Pycharm—&gt; Create New Project—&gt; Project Interpreter—&gt; Existing interpreter—&gt; Interpreter—&gt;&gt; …—&gt; Conda Environment —&gt;&gt; users—&gt; anaconda3 —&gt; bin—&gt; python X.X</p>
+          </div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+</li>
+</ul>
 
       </div>
     </div>
@@ -98,12 +110,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/08/20/markdown/">
+		<a class="copy" href="/2019/08/21/xcode/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>Markdown语法规则</h3>
+						<h3>Xcode</h3>
 					</div>
 				</div>
 			</div>
@@ -111,12 +123,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2019/08/20/markdown/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>没有更早的文章</h3>
+						<h3>Markdown语法规则</h3>
 					</div>
 				</div>
 			</div>
@@ -196,5 +208,35 @@
 <script src="/js/main.js"></script>
 <script src="/js/local.search.js"></script>
 
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
 <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>
