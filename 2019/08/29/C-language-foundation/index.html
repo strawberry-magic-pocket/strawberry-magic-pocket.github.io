@@ -79,15 +79,17 @@
       <div>
         <ul>
 <li>C++ 语言基础</li>
-<li><a id="more"></a>
-<h1 id="一、变量的存储类型"><a href="#一、变量的存储类型" class="headerlink" title="一、变量的存储类型"></a>一、变量的存储类型</h1>变量通常有4中存储类型，分别为extern,static, register, auto。<a class="btn" href="#url" title="title">**extern**</a>
+</ul>
+<a id="more"></a>
+
+<h1 id="一、变量的存储类型"><a href="#一、变量的存储类型" class="headerlink" title="一、变量的存储类型"></a>一、变量的存储类型</h1><p>变量通常有4中存储类型，分别为extern,static, register, auto。</p>
+<a class="btn" href="#url" title="title">**extern**</a>
 <div class="note warning">
             <h3 id="变量的定义与声明之间的区别"><a href="#变量的定义与声明之间的区别" class="headerlink" title="变量的定义与声明之间的区别"></a>变量的定义与声明之间的区别</h3><p>&emsp;变量的<strong>定义</strong>：将为变量分配存储空间；<br>&emsp;变量的<strong>声明</strong>：告知编译器变量的名称和数据类型</p>
           </div>
-<h3 id="为什么只声明不定义？"><a href="#为什么只声明不定义？" class="headerlink" title="为什么只声明不定义？"></a><strong>为什么只声明不定义？</strong></h3>如果在一个文件中定义一个全局变量，可能需要在其他文件进行访问，在其他文件使用<strong>extern</strong>可以只声明而不定义全局变量，这样即可共享全局变量。<br>e.g. 在一个文件中定义全局变量var<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> var = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="为什么只声明不定义？"><a href="#为什么只声明不定义？" class="headerlink" title="为什么只声明不定义？"></a><strong>为什么只声明不定义？</strong></h3><p>如果在一个文件中定义一个全局变量，可能需要在其他文件进行访问，在其他文件使用<strong>extern</strong>可以只声明而不定义全局变量，这样即可共享全局变量。<br>e.g. 在一个文件中定义全局变量var</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> var = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <p>在另一个文件中通过使用extern关键字声明全局变量即可访问变量var。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> var;</span><br></pre></td></tr></table></figure>
 
