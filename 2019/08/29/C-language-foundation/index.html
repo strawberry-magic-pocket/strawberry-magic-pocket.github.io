@@ -93,14 +93,14 @@
 <p>在另一个文件中通过使用extern关键字声明全局变量即可访问变量var。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> var;</span><br></pre></td></tr></table></figure>
 
-<a class="btn" href="#url" title="title">**static**</a>
+<a class="btn" href="#url" title="title">static</a>
 <p><strong>静态变量</strong>：分为全局静态变量和局部静态变量。</p>
 <ul>
 <li><p>在函数内部定义一个局部静态变量，则在函数执行后变量的值会保留。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TestStaticVar</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> var=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"var=%d\n"</span>,var++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>全局静态变量的作用域仅限于当前定义的文件，不能被其他文件使用extern关键字进行访问。</p>
-<a class="btn" href="#url" title="title">**register**</a></li>
+<a class="btn" href="#url" title="title">register</a></li>
 <li><p>表示变量将被放置在CPU的寄存器中，访问寄存器变量要比访问普通变量快得多；</p>
 </li>
 <li><p>register变量只能用于局部变量或作为函数的形式参数，不能用于定义全局变量。</p>
@@ -108,7 +108,7 @@
 
 </li>
 </ul>
-<a class="btn" href="#url" title="title">**auto**</a>
+<a class="btn" href="#url" title="title">auto</a>
 <div class="note warning">
             <h3 id="静态存储与动态存储"><a href="#静态存储与动态存储" class="headerlink" title="静态存储与动态存储"></a>静态存储与动态存储</h3><p>&emsp;变量的存储方式分为两种——静态存储和动态存储<br>&emsp;<strong>全局变量、静态变量</strong>均属于静态存储；<br>&emsp;<strong>局部变量</strong>属于动态存储。</p>
           </div>
