@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>C++语句 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
+    <span>2019-08-29</span>
+    <h2>C++语句</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/C/">C++</a></div>
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <ol>
+<li>C++ 语句构成</li>
+<li>使用分支语句设计逻辑条件判断</li>
+<li>掌握各种循环语句在程序开发中的应用</li>
+<li>应用跳转语句改变代码的执行顺序<a id="more"></a>
+<h1 id="一、复合语句"><a href="#一、复合语句" class="headerlink" title="一、复合语句"></a>一、复合语句</h1></li>
+</ol>
+<p><strong>注意复合语句中变量的定义域</strong><br>在复合语句中定义的变量，其作用域范围在当前定义变量处到复合语句结束。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ivar = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        ivar = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"ivar = %d\n"</span>,ivar);  <span class="comment">//ivar = 2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"ivar = %d\n"</span>,ivar);   <span class="comment">//ivar = 1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、分支语句"><a href="#二、分支语句" class="headerlink" title="二、分支语句"></a>二、分支语句</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><p>if 语句格式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(表达式)</span><br><span class="line">    语句;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(表达式)</span><br><span class="line">    语句;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    语句;</span><br></pre></td></tr></table></figure>
+
+<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><p>switch 语句格式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式/变量名)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">enum</span> State &#123;CLOSE,OPEN&#125;;</span><br><span class="line">    State s =CLOSE;</span><br><span class="line">    <span class="keyword">switch</span>(s)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> CLOSE:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Close!\n"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> OPEN:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Open!\n"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <h3 id="注意⚠️"><a href="#注意⚠️" class="headerlink" title="注意⚠️"></a>注意⚠️</h3><p>这里记住 枚举型如何定义？<strong>没有=，没有‘’</strong></p><ul><li>switch 语句用{}</li><li>如果switch语句中没有break;当表达式与常量相匹配时，将执行当前case语句代码并继续向下执行case语句代码直到遇到break语句或switch语句结束。</li><li><strong>case 语句块千万不要忘记加break语句</strong></li></ul>
+          </div>
+<div class="note info">
+            <h3 id="break-与continue-语句的区别和用法"><a href="#break-与continue-语句的区别和用法" class="headerlink" title="break 与continue 语句的区别和用法"></a>break 与continue 语句的区别和用法</h3><p>&emsp;break 语句用于跳出循环；<br>&emsp;continue 语句用于结束本轮循环。</p>
+          </div>
+<h1 id="三、循环语句"><a href="#三、循环语句" class="headerlink" title="三、循环语句"></a>三、循环语句</h1><h3 id="for"><a href="#for" class="headerlink" title="for( ; ; )"></a>for( ; ; )</h3><h3 id="while"><a href="#while" class="headerlink" title="while(){  }"></a>while(){  }</h3><h3 id="do-while-分号-不要忘记）"><a href="#do-while-分号-不要忘记）" class="headerlink" title="do{} while; (分号;不要忘记）"></a>do{} while; (分号;不要忘记）</h3><h1 id="四、跳转语句"><a href="#四、跳转语句" class="headerlink" title="四、跳转语句"></a>四、跳转语句</h1><h2 id="4-1-goto语句"><a href="#4-1-goto语句" class="headerlink" title="4.1 goto语句"></a>4.1 goto语句</h2><p>goto语句是无条件跳转语句，用于改变代码执行的顺序。<br>使用goto语句时，CPU需要不停地跳转，效率比较低，在开发时应慎用goto语句。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, sum = <span class="number">0</span>;</span><br><span class="line">    label:</span><br><span class="line">        i++;</span><br><span class="line">        sum += i;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">100</span>)</span><br><span class="line">        <span class="keyword">goto</span> label;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sum = %d\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用goto语句时应注意label的使用，其后不能紧跟 } .</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ivar = <span class="number">0</span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//其他操作</span></span><br><span class="line">    label:</span><br><span class="line">; <span class="comment">//label之后不能紧跟&#125;   </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用goto语句时应注意goto语句不能越过复合语句之外的变量定义的语句。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> lable_1;</span><br><span class="line"><span class="keyword">int</span> i =<span class="number">0</span>;   <span class="comment">//不合法，goto语句不能越过</span></span><br><span class="line">label_1:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"goto\n"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">goto</span> label_2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  <span class="comment">//合法</span></span><br><span class="line">&#125;</span><br><span class="line">label_2:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"goto\n"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-return-语句"><a href="#4-2-return-语句" class="headerlink" title="4.2 return 语句"></a>4.2 return 语句</h2><p>return 语句用于跳出退出当前函数，当程序在当前函数中执行时，return语句将推出当前函数的执行，返回到函数调用处，继续执行；若当前函数为主函数，则退出应用程序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ValidateData</span><span class="params">( <span class="keyword">const</span> <span class="keyword">int</span> price)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (price&gt;<span class="number">1000</span>||price&lt;<span class="number">10</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"价格错误！\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"验证通过。\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用return语句提前结束函数时，需要注意代码之前在堆中分配了内存，在return 语句之前应释放内存，防止内存泄漏。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReturnDemo</span><span class="params">(<span class="keyword">int</span> min)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* parr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        parr[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(parr[<span class="number">0</span>]&gt;min)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] parr;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        parr[<span class="number">0</span>] = min;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>[] parr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-exit语句"><a href="#4-3-exit语句" class="headerlink" title="4.3 exit语句"></a>4.3 exit语句</h2><p>exit()是一个用于退出当前调用进程的函数，包含一个整型参数，标识进程退出代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExitDemo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> res)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(res == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">exit</span>(res);  <span class="comment">//结束应用程序</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、练习"><a href="#五、练习" class="headerlink" title="五、练习"></a>五、练习</h1><h3 id="5-1-判断是否为素数"><a href="#5-1-判断是否为素数" class="headerlink" title="5.1 判断是否为素数"></a>5.1 判断是否为素数</h3><p>什么是质数？质数除1和其本身之外没有其他约数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义法,时间复杂度O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime_1</span><span class="params">(<span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp=num<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=tmp;i++)</span><br><span class="line">        <span class="keyword">if</span>(num%i==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个数若可以进行因数分解，则分解时得到的两个数一定是一个小于等于sqrt(n)，一个大于等于sqrt(n),所以在判断时不需要遍历至(n-1),遍历至sqrt(n)即可。时间复杂度O(sqrt(n))。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime_2</span><span class="params">(<span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = <span class="built_in">sqrt</span>(num);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=tmp;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(num%i==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">关于质数的一个规律：大于等于<span class="number">5</span>的质数一定和<span class="number">6</span>的倍数相邻。</span><br><span class="line">证明：令x&gt;=<span class="number">1</span>,大于等于<span class="number">5</span>的自然数可以表示为：<span class="number">6</span>i<span class="number">-1</span>,<span class="number">6</span>i,<span class="number">6</span>i+<span class="number">1</span>,<span class="number">6</span>i+<span class="number">2</span>,<span class="number">6</span>i+<span class="number">3</span>,<span class="number">6</span>i+<span class="number">4</span>,<span class="number">6</span>i+<span class="number">5</span></span><br><span class="line">其中，<span class="number">6</span>i一定是<span class="number">6</span>的倍数，<span class="number">6</span>i+<span class="number">2</span>,<span class="number">6</span>i+<span class="number">4</span>一定是<span class="number">2</span>的倍数，<span class="number">6</span>i+<span class="number">3</span>一定是<span class="number">3</span>的倍数，均不是素数，所以只需要考虑<span class="number">6</span>i<span class="number">-1</span>和<span class="number">6</span>i+<span class="number">5</span>，判断其不是<span class="number">5</span>或<span class="number">7</span>，<span class="number">11</span>或<span class="number">13</span>，<span class="number">17</span>或<span class="number">19.</span>.....的倍数即可。</span><br><span class="line">```C</span><br><span class="line"><span class="keyword">bool</span> isPrime_3(<span class="keyword">int</span> num)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//先输出小于5的质数</span></span><br><span class="line">    <span class="keyword">if</span>(num==<span class="number">2</span> || num==<span class="number">3</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//不在6的倍数两侧的数一定不是质数</span></span><br><span class="line">    <span class="keyword">if</span>(num%<span class="number">6</span>!=<span class="number">5</span> &amp;&amp; num%<span class="number">6</span>!=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//在6的倍数两侧也不一定是质数</span></span><br><span class="line">    <span class="keyword">int</span> tmp = <span class="built_in">sqrt</span>(num);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;i&lt;=tmp;i+=<span class="number">6</span>)</span><br><span class="line">        <span class="keyword">if</span>(num%i==<span class="number">0</span> || num%(i+<span class="number">2</span>)==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/29/C-language-foundation/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>C++ 数据类型</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/25/kNN/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>实战k-近邻算法</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        <li> <a href="https://hexo.io/zh-cn/docs/" target="_blank">Hexo_doc</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
