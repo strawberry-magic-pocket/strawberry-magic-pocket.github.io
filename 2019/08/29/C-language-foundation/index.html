@@ -92,6 +92,7 @@
 <li>结构体类型</li>
 <li>指针类型</li>
 <li>自定义类型</li>
+<li>引用类型</li>
 </ul>
 </li>
 <li>运算符<ul>
@@ -212,6 +213,16 @@
 <h2 id="2-6-自定义类型"><a href="#2-6-自定义类型" class="headerlink" title="2.6 自定义类型"></a>2.6 自定义类型</h2><p>使用关键字<strong>typedef</strong>自定义数据类型，为已存在的数据类型定义一个新的名称</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// typedef 数据类型 新的名称;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> UINT;</span><br></pre></td></tr></table></figure>
 
+<h2 id="2-7-引用类型"><a href="#2-7-引用类型" class="headerlink" title="2.7 引用类型"></a>2.7 引用类型</h2><p>引用可认为是“别名”，即目标的代名词。当定义一个引用时，需要为其指定一个对象，即目标。此时，操作引用与操作实际的目标对象时相同的。<br>定义引用的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据类型  &amp;引用名称 = 目标对象;</span><br></pre></td></tr></table></figure>
+
+<p>e.g 使用引用对象代替目标对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> &amp;rvar = ivar;</span><br><span class="line">    rvar = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ivar = %d\n"</span>,ivar);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"rvar = %d\n"</span>,rvar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <h3 id="引用变量"><a href="#引用变量" class="headerlink" title="引用变量"></a>引用变量</h3><p>引用变量rvar即目标变量ivar的代名词，对rvar取地址其实就是对ivar取地址。</p>
+          </div>
+
 <h1 id="三、运算符"><a href="#三、运算符" class="headerlink" title="三、运算符"></a>三、运算符</h1><h2 id="3-1-左移运算符-lt-lt"><a href="#3-1-左移运算符-lt-lt" class="headerlink" title="3.1 左移运算符  &lt;&lt;"></a>3.1 左移运算符  &lt;&lt;</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> iret =<span class="number">10</span> &lt;&lt;<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-2-右移运算符-gt-gt"><a href="#3-2-右移运算符-gt-gt" class="headerlink" title="3.2 右移运算符 &gt;&gt;"></a>3.2 右移运算符 &gt;&gt;</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> iret=<span class="number">10</span> &gt;&gt;<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
@@ -269,12 +280,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2019/09/04/Cpp4/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>C++面向过程程序设计</h3>
 					</div>
 				</div>
 			</div>

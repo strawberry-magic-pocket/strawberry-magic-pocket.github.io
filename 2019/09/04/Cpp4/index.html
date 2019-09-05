@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>C++面向过程程序设计 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
+    <span>2019-09-04</span>
+    <h2>C++面向过程程序设计</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/C/">C++</a></div>
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <ol>
+<li>定义和使用函数</li>
+<li>设计递归函数</li>
+<li>理解命名空间的使用</li>
+<li>定义函数模板<a id="more"></a>
+<h1 id="一、函数"><a href="#一、函数" class="headerlink" title="一、函数"></a>一、函数</h1><h2 id="1-1-定义函数"><a href="#1-1-定义函数" class="headerlink" title="1.1 定义函数"></a>1.1 定义函数</h2><div class="note info">
+            <h3 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h3><p><strong>返回值类型</strong> <strong>函数名</strong> <strong>（参数列表）</strong><br>{<br>    <strong>函数体;</strong><br>}</p>
+          </div></li>
+</ol>
+<ul>
+<li><p>在定义函数参数时，如果多个参数具有相同的数据类型，则需要分别定义，不允许整体定义。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,y)</span> <span class="comment">//语法错误，不允许整体定义</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ;            <span class="comment">// 可以先将函数设置为空函数，之后需要进行功能补充时再完善函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在调用函数时，如果当前函数处于被调用函数的下方，则需要对被调用函数进行前置声明。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">    ret = sum(m,n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i+j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<div class="note warning">
+            <h3 id="argc-与argv-的作用"><a href="#argc-与argv-的作用" class="headerlink" title="argc 与argv[]的作用"></a>argc 与argv[]的作用</h3><p>定义主函数 int main(int argc,char* argv[])<br>其中，argc为整型，用来统计程序运行时发送给main函数的命令行参数的个数。在VS中默认为1；<br>char* 型的argv[]，为字符串数组，用来存放指向的字符串参数的指针数组（即存放参数的地址），每一个元素指向一个参数。</p>
+          </div>
+<h2 id="1-2-设置默认值参数"><a href="#1-2-设置默认值参数" class="headerlink" title="1.2 设置默认值参数"></a>1.2 设置默认值参数</h2><p>在调用有参函数时，如果经常需要传递同一个值到调用函数，可以在定义函数时为参数设置一个默认值，这样在调用函数时便可以省略一些参数。<br>在定义函数默认值参数时，如果函数有多个参数，应保证默认值参数在参数列表的右方。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OutputInfo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* pchData = <span class="string">"One world,one dream!"</span>)</span></span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,pchData); </span><br><span class="line">&#125;</span><br><span class="line">## <span class="number">1.3</span> 设置数组参数</span><br><span class="line">使用数组作为参数时，可以不指定数组的长度。在调用数组参数的函数时，C++编译器不对数组的长度进行检查，只是传递数组首地址。</span><br><span class="line">```C</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sorted</span><span class="params">(<span class="keyword">int</span> arr[<span class="number">10</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可以不指定数组的长度，使用一个单独的参数len传递数组的长度，这样更加灵活</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sorted</span><span class="params">(<span class="keyword">int</span> arr[]],<span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如何通过数组参数来限制函数调用时必须传递指定长度的数组？</strong><br>解决方法：<span class="label danger">使用数组的引用作为函数的参数。</span><br>e.g 使用数组的引用作为函数参数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sorted</span><span class="params">(<span class="keyword">int</span> (&amp;<span class="built_in">array</span>)[<span class="number">10</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">10</span><span class="number">-1</span>-i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">array</span>[j]&lt;<span class="built_in">array</span>[j+<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                t = <span class="built_in">array</span>[j];</span><br><span class="line">                <span class="built_in">array</span>[j] = <span class="built_in">array</span>[j+<span class="number">1</span>];</span><br><span class="line">                <span class="built_in">array</span>[j+<span class="number">1</span>] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"排序后的结果："</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%2d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用此函数，参数必须时长度为10的整型数组。</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <h3 id="数组引用"><a href="#数组引用" class="headerlink" title="数组引用"></a>数组引用</h3><p>int (&amp;array)[10];  //定义一个引用array,取代长度为10的数组<br>int (*array)[5];   //定义一个整型指针，指向长度为5的数组<br>int &amp;array[10];    //非法，不可以定义引用数组<br>int *array[5];     //定义一个指针数组</p>
+          </div>
+<h2 id="1-4-设置指针-引用参数"><a href="#1-4-设置指针-引用参数" class="headerlink" title="1.4 设置指针/引用参数"></a>1.4 设置指针/引用参数</h2><div class="note info">
+            <h3 id="函数参数的传递方式"><a href="#函数参数的传递方式" class="headerlink" title="函数参数的传递方式"></a>函数参数的传递方式</h3><p><strong>值传递：</strong>在函数调用时，将实际参数的值复制一份传递到调用函数中。如果在调用函数中修改了参数的值，不会影响实际参数的值。<br><strong>引用传递：</strong>在调用函数中修改了参数的值会影响实际参数的值。若参数为指针、引用、数组类型，则为引用传递，否则为值传递。</p>
+          </div>
+<div class="note danger">
+            <h3 id="使用引用、指针参数的区别？"><a href="#使用引用、指针参数的区别？" class="headerlink" title="使用引用、指针参数的区别？"></a>使用引用、指针参数的区别？</h3><p>对于引用参数，引用必须被初始化为一个对象，并且不能使它再指向其他对象，因为对引用赋值实际上是对目标对象赋值。<br>在函数中，无法验证引用参数的合法性。<br>对于指针参数，用户可以随意修改指针参数指向的对象，但需要验证数组是否为空。<br>（不太明白……)</p><ul><li>引用指向其他对象？</li><li>如何验证指针参数是否为空？<br>if (parry==NULL)<br>{<br>   cout &lt;&lt; “指针为空“ &lt;&lt; endl;<br>}</li></ul>
+          </div>
+<h2 id="1-5-省略号参数"><a href="#1-5-省略号参数" class="headerlink" title="1.5 省略号参数"></a>1.5 省略号参数</h2><p>省略号参数代表的含义是：函数的参数是不固定的，可以传递一个或多个参数。<br>定义省略号参数函数，在编写函数体时需要一一读取用户传递的实际参数。可以使用va_list类型和va_start,va_arg,va_end 3个宏读取传递到函数中的参数值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OutputInfo</span><span class="params">(<span class="keyword">int</span> num,...)</span>    <span class="comment">// 定义一个省略号参数函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list arguments;  <span class="comment">//定义 va_list类型变量</span></span><br><span class="line">    va_start(arguments,num);</span><br><span class="line">    <span class="keyword">while</span>(num--)       <span class="comment">// 读取所有参数的数据</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">char</span>* pchData = va_arg(arguments,<span class="keyword">char</span>*);  <span class="comment">// 获取字符串数据</span></span><br><span class="line">        <span class="keyword">int</span> iData = va_arg(arguments,<span class="keyword">int</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,pchData);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,iData);</span><br><span class="line">    &#125;</span><br><span class="line">    va_end(arguments);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    OutputInfo(<span class="number">2</span>,<span class="string">"Beijing"</span>,<span class="number">2008</span>,<span class="string">"Olympic Games"</span>,<span class="number">2008</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-6-内联函数"><a href="#1-6-内联函数" class="headerlink" title="1.6 内联函数"></a>1.6 内联函数</h2><ul>
+<li>对程序中出现函数调用的地方，如果函数是内联函数，则编译器直接将函数代码赋值到函数调用的地方，这样便省去了跳转到函数定义的地方执行代码然后再返回到调用函数处的一个过程，提高了代码执行的效率。</li>
+<li>内联函数一个缺点是增加了代码量。对于短小的、经常使用的函数可以将其定义为内联函数。<br>使用inline 关键字定义内联函数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inline void testDemo()&#123;</span><br><span class="line">    ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>inline只是对编译器的一个建议，编译器是否将其作为内联函数处理依赖于编译器的优化机制。</p>
+<h2 id="1-7-链接指示符-extern-“C”"><a href="#1-7-链接指示符-extern-“C”" class="headerlink" title="1.7 链接指示符 extern “C”"></a>1.7 链接指示符 extern “C”</h2><p>extern “C” 表示函数是使用其他语言写的。由于不同厂家、不同语言的编译器对函数的默认调用约定不同，导致不同语言对函数的参数处理顺序不同，所以为了能在C++中调用其他语言写的函数，需要用到链接指示符。<br>extern “C” 通过3种方式标识函数：</p>
+<ul>
+<li><p>只标识一个函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">float</span> x)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用复合语句标识一组函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">float</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OutputInfo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* cData)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过引用头文件标识头文件中的所有函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"inlinedemo.h"</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="1-8-重载函数"><a href="#1-8-重载函数" class="headerlink" title="1.8 重载函数"></a>1.8 重载函数</h2><p>重载函数指多个函数具有相同的函数名称，而参数类型或参数个数不同。函数调用时，编译器以参数的类型及个数来区分调用哪一个函数。<br>定义重载函数需要注意：</p>
+<ul>
+<li><p>函数的返回值类型不作为区分重载函数的一部分</p>
+</li>
+<li><p>对于普通的函数参数，const关键字不作为区分重载函数的标识，但是若参数为指针或引用类型，则const关键字可作为重载函数的标识</p>
+</li>
+<li><p>参数的默认值不作为区分重载函数的标识</p>
+</li>
+<li><p>typedef自定义类型不作为重载的标识</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> INT;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(INT x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x&gt;<span class="number">10</span>)?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">int</span> x)</span>   <span class="comment">// 不合法重载</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x&gt;<span class="number">10</span>)?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>局部域中声明的函数将隐藏而不是重载全局域中的函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">int</span> x)</span>   </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x&gt;<span class="number">10</span>)?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">float</span> x)</span>   </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x&gt;<span class="number">10</span>)?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;   <span class="comment">// 在局部域中声明函数</span></span><br><span class="line">    Validate(<span class="number">1.5f</span>);  <span class="comment">// 报错，第二个函数被隐藏</span></span><br><span class="line">    <span class="comment">// ::Validate(1.5f); // 使用作用域运算符::访问被隐藏的全局函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Validate</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span>   </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x&gt;y)?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="1-9-函数递归调用"><a href="#1-9-函数递归调用" class="headerlink" title="1.9 函数递归调用"></a>1.9 函数递归调用</h2><p>函数递归是指函数直接或间接调用其本身。递归直接调用是指在函数体中再次调用该函数，递归间接调用是指函数调用另一个函数，而被调用的函数又调用了第一个函数。<br>e.g 利用递归求n的阶乘。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> UINT;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">const</span> UINT n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n ==<span class="number">0</span> || n==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> n*factorial(n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>递归函数必须有终止条件！</strong><br>递归函数会增加系统的额外开销，导致程序性能下降，如果传递一个很大的数，会导致堆栈溢出，因为每调用一次函数，系统便会为函数的参数分配堆栈空间。</p>
+<h2 id="1-10-函数指针"><a href="#1-10-函数指针" class="headerlink" title="1.10 函数指针"></a>1.10 函数指针</h2><p>函数名实际上是指向函数的长指针。<br>使用typedef定义一个函数指针类型，然后定义该类型的变量。<br>函数指针必须与函数的 <strong>返回值类型</strong>、<strong>参数个数</strong>、<strong>参数类型</strong>保持一致。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*ptfun)</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;  <span class="comment">// 定义一个指向具有两个整型变量的函数的指针</span></span><br><span class="line">ptfun fun;   <span class="comment">// 使用指针类型定义一个变量</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line">fun = sum;</span><br><span class="line"><span class="keyword">int</span> ret = fun(<span class="number">2</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用函数指针可以增加程序的灵活性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Invoke</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,pfun fun)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fun(x,y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数具有统一的形式，相同的返回值类型，参数个数和参数类型，只是对数据的处理方式不同。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x-y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x/y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pfun fun;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    fun = sum;   <span class="comment">// 只需要改变fun指向的函数即可。</span></span><br><span class="line">    ret = Invoke(<span class="number">20</span>,<span class="number">10</span>,fun);</span><br><span class="line">    fun = div;</span><br><span class="line">    ret = Invoke(<span class="number">20</span>,<span class="number">10</span>,fun);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义函数指针数组"><a href="#定义函数指针数组" class="headerlink" title="定义函数指针数组"></a>定义函数指针数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*pfun[<span class="number">4</span>])(<span class="keyword">int</span>,<span class="keyword">int</span>);</span><br><span class="line">pfun[<span class="number">0</span>] = sum;</span><br><span class="line">pfun[<span class="number">1</span>] = sub;</span><br><span class="line">pfun[<span class="number">2</span>] = div;</span><br><span class="line">pfun[<span class="number">3</span>] = mul;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = pfun[i](<span class="number">20</span>,<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ret);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 二、作用域和生命期</span><br><span class="line">作用域和生命期描述了常量、变量、函数等对象的适用范围。</span><br><span class="line">## <span class="number">2.1</span> 局部作用域</span><br><span class="line"><span class="number">1.</span> 描述了函数体或复合语句中变量、常量等对象的作用范围；</span><br><span class="line"><span class="number">1.</span> 对于处于同一局部作用域的对象，是不允许重名的；</span><br><span class="line"><span class="number">1.</span> 当编译器在当前代码处发现变量名时，它将在当前的局部作用域中搜索变量的定义，若未发现变量的定义，则向外一层继续搜索，直至搜索完全局作用域。如果仍未发现变量的定义，则会出现标识符没有定义的错误。</span><br><span class="line"><span class="number">1.</span> 如果在嵌套局部作用域的外层和内部作用域定义了同名的变量，内部的局部作用域的变量会将外部变量隐藏。</span><br><span class="line">```C</span><br><span class="line"><span class="keyword">int</span> ivar = <span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ivar = %d\n"</span>,ivar);</span><br><span class="line">    <span class="keyword">char</span> *ivar = <span class="string">"Hello World!"</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,ivar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info">
+            <h3 id="str-与-str-的区别"><a href="#str-与-str-的区别" class="headerlink" title="str[] 与 *str 的区别"></a>str[] 与 *str 的区别</h3><p>所有以“” 或‘’包含的字符、字符串都是常量，是存储在<mark>堆</mark>上的。<br><strong>char str[] = “hello”</strong> 定义了一个局部字符数组，是一个局部变量，不能在函数中返回其数组地址，函数结束时数组地址是一个已经释放了的空间地址。<strong>str在栈上申请空间，将常量内容复制进来，所以是局部变量。</strong><br><strong>char *str = “hello”</strong> 表示先定义一个字符串常量，并将其地址赋给str。str存储在全局静态存储区。</p>
+          </div>
+<h2 id="2-2-全局作用域"><a href="#2-2-全局作用域" class="headerlink" title="2.2 全局作用域"></a>2.2 全局作用域</h2><p>全局作用域的作用范围是整个应用程序。全局对象、全局函数、全局变量……</p>
+<ul>
+<li>全局作用域定义的变量如果没有被初始化，默认为0；局部变量则不确定；</li>
+<li>整个应用程序中，全局变量只能被定义一次，不能重名；</li>
+<li>如果一个函数中定义的局部变量与全局变量重名，则全局变量被隐藏，需要使用运算符::对全局变量进行访问。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">5</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ivar = <span class="number">10</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"局部ivar = %d\n"</span>,ivar);  <span class="comment">//输出局部变量</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"全局ivar = %d\n"</span>,::ivar); <span class="comment">//访问全局变量</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="2-3-定义和使用命名空间"><a href="#2-3-定义和使用命名空间" class="headerlink" title="2.3 定义和使用命名空间"></a>2.3 定义和使用命名空间</h2><p>在一个应用程序的多个文件中，可能存在同名的全局对象，会导致程序链接错误。可以使用命名空间消除命名冲突。</p>
+<ul>
+<li>命名空间的定义格式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">namespace 名称</span><br><span class="line">&#123;</span><br><span class="line">    常量、变量、函数等对象的定义;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>e.g 定义两个命名空间。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">namesapce Output        <span class="comment">// 定义一个命名空间 Output</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MAXLEN = <span class="number">128</span>;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">10</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">PutoutText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* pchData)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pchData != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"PutoutText命名空间：%s\n)"</span>,pchData);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Windows      <span class="comment">// 定义一个命名空间 Windows</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> UINT;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">PutoutText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* pchData)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pchData != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Windows 命名空间:%s\n"</span>,pchData);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用命名空间<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output::PutoutText(<span class="string">"Hello World!"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>需要访问命名空间中的多个对象，也可以使用using命令引用整个命名空间对象。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Output;   <span class="comment">// 引用 Output 命名空间</span></span><br><span class="line">PutoutText(<span class="string">"Hello World!"</span>); <span class="comment">// 访问 Output 命名空间中的函数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>using命令的作用域从当前引用处到当前作用域的结束。如果将using命令放置在复合语句中，则复合语句结束时，using的作用域也随之结束了。</p>
+</li>
+<li><p>在函数中定义的局部变量与命名空间中的变量同名时，命名空间中的变量将被隐藏。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">5</span>;        <span class="comment">// 定义局部变量</span></span><br><span class="line">    <span class="keyword">using</span> namesapce Output;    <span class="comment">// 引用命名空间</span></span><br><span class="line">    PutoutText(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ivar);  <span class="comment">// ivar的值为5，函数内部定义的局部变量将命名空间中的变量隐藏了</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Output::ivar);  <span class="comment">// ivar 的值为10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果程序中使用using命令引用了多个命名空间，且命名空间中存在相同的函数，将导致歧义。解决方法是使用作用域运算符::区分。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> Output;</span><br><span class="line">    <span class="keyword">using</span> namesapce Windows;</span><br><span class="line">    Output::PutoutText(<span class="string">"Hello,"</span>);</span><br><span class="line">    Windows::PutoutText(<span class="string">"World!"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于同一个命名空间，可以在多个文件中定义。命名空间中的内容为两个文件命名空间内容的总和。</p>
+</li>
+<li><p>在定义头文件时，通常在头文件中声明命名空间中的函数，在源文件中定义命名空间中的函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在头文件中声明命名空间中的函数</span></span><br><span class="line"><span class="keyword">namespace</span> Output</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">()</span></span>;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在源文件中定义命名空间中的函数</span></span><br><span class="line"><span class="comment">// 使用命名空间作为前缀，表明实现的是命名空间中的函数，否则定义的是全局函数。</span></span><br><span class="line">Output::Demo()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is a function.\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以定义嵌套的命名空间。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> Output</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> UINT;</span><br><span class="line">    <span class="keyword">int</span> ivar = <span class="number">10</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OutputText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* data)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data!=<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Output命名空间:%s\n"</span>,data);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> GDI</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ivar = <span class="number">5</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">WriteText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* pchMg)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"GDI命名空间：%s\n"</span>,pchMg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 访问GDI空间中的函数/对象</span></span><br><span class="line">Output::GDI::WriteText(<span class="string">"Welcome!"</span>);</span><br><span class="line"><span class="comment">// 或 使用using语句访问</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Output::GDI;</span><br><span class="line">WriteText(<span class="string">"Welcome!"</span>);</span><br><span class="line"><span class="comment">// 只是引用了GDI空间，并没有引用Output空间</span></span><br><span class="line">OutputText(<span class="string">"hello!"</span>); <span class="comment">//非法</span></span><br><span class="line">Output::OutputText(<span class="string">"hello!); // 合法</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名空间可以不命名。未命名的命名空间中的对象只适用于当前文件，各个文件之间不能相互访问定义在各自未命名空间中的对象，所以在未命名空间中的对象相当于静态（satic)全局变量（静态全局变量相当于半个全局变量，他只能在当前文件使用）。<br>在定义未命名空间中的对象时，注意其中的对象不能与全局对象同名或相同，（函数可以重名，表示函数重载，但参数列表不能相同）。</p>
+<h1 id="三、函数模板"><a href="#三、函数模板" class="headerlink" title="三、函数模板"></a>三、函数模板</h1><h2 id="3-1-定义函数模板"><a href="#3-1-定义函数模板" class="headerlink" title="3.1 定义函数模板"></a>3.1 定义函数模板</h2><p>C++使用<strong>template</strong>定义模板。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">type</span>&gt;     // 定义一个模板类型</span></span><br><span class="line"><span class="class"><span class="title">type</span> <span class="title">Sum</span>(<span class="title">type</span> <span class="title">xvar</span>,<span class="title">type</span> <span class="title">yvar</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">return</span> xvar+yvar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<div class="note info">
+            <h3 id="定义函数模板"><a href="#定义函数模板" class="headerlink" title="定义函数模板"></a>定义函数模板</h3><p>&lt;&gt;表示模板参数，模板参数分为两种，一种是模板类型参数，使用关键字class或typedef定义，另一种为模板非类型参数，与普通变量定义相同。<br>template 关键字定义一个模板，可以是函数模板也可以是类模板。</p>
+          </div>
+<h2 id="3-2-使用函数模板"><a href="#3-2-使用函数模板" class="headerlink" title="3.2 使用函数模板"></a>3.2 使用函数模板</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ret = Sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">double</span> ret = Sum(<span class="number">10.2</span>,<span class="number">20.1</span>);</span><br><span class="line"><span class="comment">// 如果为函数传递两个类型不同的参数，编译器会产生歧义</span></span><br><span class="line"><span class="keyword">int</span> ret = Sum(<span class="number">10.5</span>,<span class="number">20</span>);   <span class="comment">// 错误调用</span></span><br><span class="line"><span class="keyword">double</span> ret = Sum(<span class="number">10</span>,<span class="number">20.5</span>);</span><br><span class="line"><span class="comment">// 若用户在调用时显示地标识出模板的参数类型，则不会产生歧义</span></span><br><span class="line"><span class="keyword">int</span> ret = Sum&lt;<span class="keyword">int</span>&gt;(<span class="number">10.5</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">double</span> ret = Sum&lt;<span class="keyword">double</span>&gt;(<span class="number">10</span>,<span class="number">20.5</span>);</span><br></pre></td></tr></table></figure>
+
+<p>e.g 定义一个函数模板，使用模板类型参数和模板非类型参数，求数组的最大值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typedef</span> type,<span class="keyword">int</span> len&gt;</span><br><span class="line"><span class="function">type <span class="title">Max</span><span class="params">(type <span class="built_in">array</span>[len])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    type ret = <span class="built_in">array</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[i]&gt;ret)</span><br><span class="line">        &#123;</span><br><span class="line">            ret = <span class="built_in">array</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ret = (ret&gt;array[i])?ret:array[i];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用函数模板</span></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> Max&lt;<span class="keyword">int</span>,<span class="number">5</span>&gt;(arr);</span><br><span class="line"><span class="keyword">double</span> <span class="built_in">array</span>[<span class="number">3</span>] = &#123;<span class="number">1.1</span>,<span class="number">2.2</span>,<span class="number">3.3</span>&#125;;</span><br><span class="line"><span class="keyword">double</span> Max&lt;<span class="keyword">double</span>,<span class="number">3</span>&gt;(<span class="built_in">array</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-重载函数模板"><a href="#3-3-重载函数模板" class="headerlink" title="3.3 重载函数模板"></a>3.3 重载函数模板</h2><p>函数模板重载与函数重载相同，区分点在于参数类型和参数类型不同。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义重载函数模板</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">type</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">type</span> <span class="title">Sum</span>(<span class="title">type</span> <span class="title">xvar</span>,<span class="title">type</span> <span class="title">yvar</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">return</span> xvar+yvar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">type</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">type</span> <span class="title">Sum</span>(<span class="title">type</span> <span class="title">array</span>,<span class="title">int</span> <span class="title">len</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    type sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum+=<span class="built_in">array</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用重载函数模板</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">5</span>, y=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    sum = Sum(x,y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"两数之和为:%d\n"</span>,sum);</span><br><span class="line">    sum = Sum(<span class="built_in">array</span>,<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"数组各元素之和为:%d\n"</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note warning">
+            <h3 id="函数参数为数组"><a href="#函数参数为数组" class="headerlink" title="函数参数为数组"></a>函数参数为数组</h3><p>如果函数的参数为数组，一般的定义形式为：<br>int sumDemo(int array[],int len){;}<br>这里测试了一下，对于函数模板，以下两种形式均可：<br>第一种：<br>template &lt;class type,int len&gt;  // 这里指出模板非类型参数len<br>type testSum(type array[len]){;}<br>调用格式：<br>int array[5] = {1,2,3,4,5};<br>sum = testSum&lt;int,5&gt;(array);   // 调用时显式地标识出模板的参数类型</p><p>第二种：<br>template <class type>     // 这里不需要指定模板非类型参数<br>type testSum(type array[],int len){;}   // 函数定义时在参数类表中指出模板非类型参数，与普通函数一样<br>调用格式：<br>sum = testSum(array,5);  // 调用时可以指出模板的参数类型，直接带入参数即可。</class></p>
+          </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/29/C-language-foundation/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>C++ 数据类型</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        <li> <a href="https://hexo.io/zh-cn/docs/" target="_blank">Hexo_doc</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
