@@ -184,7 +184,7 @@
             <h3 id="read"><a href="#read" class="headerlink" title="read()"></a>read()</h3><p>read(size)：从文件当前位置起读取size个字节，若无参数size，则读取至整个文件结束，返回字符串对象。</p>
           </div>
 <div class="note primary">
-            <h3 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h3><p>readline()：每次读取一行内容，比较适合大文件，输出为字符串对象。</p>undefined
+            <h3 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h3><p>readline()：每次读取一行内容，比较适合大文件，输出为字符串对象。</p><p>f = open(filename,’r’)</p><h1 id="with-open-filename-’r’-as-f"><a href="#with-open-filename-’r’-as-f" class="headerlink" title="with open(filename,’r’) as f:"></a>with open(filename,’r’) as f:</h1><p>for i in range(4):<br>    data = f.readline()<br>    print(data.strip())</p>
           </div>
 <div class="note info">
             <h3 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h3><p>readlines()：读取整个文件所有行，保存在一个<strong>列表（list）</strong>变量中，每行作为一个元素，但读取大文件会比较占内存。</p>

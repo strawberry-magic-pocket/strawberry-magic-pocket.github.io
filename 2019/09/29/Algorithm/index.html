@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>《算法图解》学习笔记 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
+    <span>2019-09-29</span>
+    <h2>《算法图解》学习笔记</h2>
+    
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="一、二分法"><a href="#一、二分法" class="headerlink" title="一、二分法"></a>一、二分法</h1><p>使用二分法时，输入一定是<strong>有序</strong>列表。<br>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def Binary_search(list, item):</span><br><span class="line">    low = 0</span><br><span class="line">    high = len(list) - 1</span><br><span class="line">    while low&lt;=high:</span><br><span class="line">        mid = (low + high) // 2   # 结果自动向下取整</span><br><span class="line">        if list[mid] == item:</span><br><span class="line">            return mid</span><br><span class="line">        </span><br><span class="line">        if item &lt; list[mid]:</span><br><span class="line">            high = mid - 1</span><br><span class="line">        else:</span><br><span class="line">            low = mid + 1</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">my_list = [2,3,4,6]</span><br><span class="line">print(Binary_search(my_list,2))</span><br><span class="line">print(Binary_search(my_list,1))</span><br></pre></td></tr></table></figure>
+
+<p>C++ 实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Binary_search</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> len,<span class="keyword">int</span> item)</span></span></span><br><span class="line"><span class="function"><span class="comment">// void Binary_search(int*a, int len, int item)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = len - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (low&lt;=high)</span><br><span class="line">    &#123;</span><br><span class="line">        mid = (high + low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] == item)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"a[%d] = %d\n"</span>,mid,item);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> (item &lt; a[mid])</span><br><span class="line">            high = mid <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] != item)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"数组不包含元素 %d\n"</span>,item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h1><p>选择排序的思想是每次选择最小的数字，需要遍历（n-1）次，需要比较（n-1）次。<br>python实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findSmallest</span><span class="params">(arr)</span>:</span></span><br><span class="line">    smallest = arr[<span class="number">0</span>]</span><br><span class="line">    smallest_index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(arr)):</span><br><span class="line">        <span class="keyword">if</span> arr[i] &lt; smallest:</span><br><span class="line">            smallest = arr[i]</span><br><span class="line">            smallest_index = i</span><br><span class="line">    <span class="keyword">return</span> smallest_index</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SelectionSort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    newArr = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        smallest = findSmallest(arr)</span><br><span class="line">        newArr.append(arr.pop(smallest))</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br></pre></td></tr></table></figure>
+
+<p>C++ 实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectionSort</span><span class="params">(<span class="keyword">int</span>* a,<span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t,i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;l<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;l;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j]&lt;a[i])    <span class="comment">// 按从小到大排序</span></span><br><span class="line">            &#123;</span><br><span class="line">                t = a[i];</span><br><span class="line">                a[i] = a[j];</span><br><span class="line">                a[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、分而治之"><a href="#三、分而治之" class="headerlink" title="三、分而治之"></a>三、分而治之</h1><h2 id="3-1-数组求和"><a href="#3-1-数组求和" class="headerlink" title="3.1 数组求和"></a>3.1 数组求和</h2><p>输入一个数组 —&gt; 如果数组为空，则返回0 —&gt; 否则计算列表中除第一个数之外的其他数的和，再将其与第一个数相加，返回结果。<br>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> list == []:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> list[<span class="number">0</span>] + sum(list[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-编写递归函数计算列表包含的元素个数"><a href="#3-2-编写递归函数计算列表包含的元素个数" class="headerlink" title="3.2 编写递归函数计算列表包含的元素个数"></a>3.2 编写递归函数计算列表包含的元素个数</h2><p>输入列表 —&gt; 如果列表为空，则长度为0 —&gt; 否则计算列表除第一个元素之外的元素个数<br>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> list ==[]:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + count(list[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-找出列表中最大的数"><a href="#3-3-找出列表中最大的数" class="headerlink" title="3.3 找出列表中最大的数"></a>3.3 找出列表中最大的数</h2><p>输入列表 —&gt; 如果列表只包含两个元素，则直接比较大小，输出较大值 —&gt; 否则递归计算除列表第一个元素之外的较大值与列表第一个值进行比较，输出结果<br>python 实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max</span><span class="params">(list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(list) == <span class="number">2</span>:    <span class="comment"># 基线条件</span></span><br><span class="line">        <span class="keyword">if</span> list[<span class="number">0</span>] &gt; list[<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> list[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> list[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sub_max = max(list[<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">if</span> list[<span class="number">0</span>] &gt; sub_max:</span><br><span class="line">            <span class="keyword">return</span> list[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> sub_max</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max</span><span class="params">(list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(list)==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> list[<span class="number">0</span>] <span class="keyword">if</span> list[<span class="number">0</span>] &gt; list[<span class="number">1</span>] <span class="keyword">else</span> list[<span class="number">1</span>]</span><br><span class="line">    sub_max = max(list[<span class="number">1</span>:])</span><br><span class="line">    <span class="keyword">return</span> list[<span class="number">0</span>] <span class="keyword">if</span> list[<span class="number">0</span>] &gt; sub_max <span class="keyword">else</span> sub_max</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-二分查找"><a href="#3-4-二分查找" class="headerlink" title="3.4 二分查找"></a>3.4 二分查找</h2><p>二分查找也是一种分而治之的算法，基线条件是数组只有一个元素，如果查找的值与这个元素相同，则找到了，如果不相同，则数组中不包含该值。<br>递归条件中，将数组分为两半，将其中一半丢弃，对另一半进行二分查找。</p>
+<h1 id="四、快速排序算法"><a href="#四、快速排序算法" class="headerlink" title="四、快速排序算法"></a>四、快速排序算法</h1><p>快速排序算法采用了分而治之的思想，原理是：</p>
+<ol>
+<li>基准条件：数组没有元素或只有一个元素时，不需要进行排序</li>
+<li>首先选择一个基准值；</li>
+<li>将数组中其他值与基准值比较，大于基准值的数组成一个数组，小于基准值的数组成一个数组；</li>
+<li>分别对两个数组进行快速排序。<br>python 实现<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(list)&lt;<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> list</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = list[<span class="number">0</span>]</span><br><span class="line">        less = [i <span class="keyword">for</span> i <span class="keyword">in</span> list[<span class="number">1</span>:] <span class="keyword">if</span> i&lt;pivot ]</span><br><span class="line">        greater = [i <span class="keyword">for</span> i <span class="keyword">in</span> list[<span class="number">1</span>:] <span class="keyword">if</span> i&gt;pivot ]</span><br><span class="line">        <span class="keyword">return</span> quickSort(less) + [pivot] + quickSort(greater)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>C++ 实现</p>
+<div class="note info">
+            <h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>C++数组长度固定，选取基准值之后，需要遍历数组，将其分为两部分，调整基准值的位置。</p>
+          </div>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>* arr,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = left + <span class="number">1</span>;  <span class="comment">// less</span></span><br><span class="line">    <span class="keyword">int</span> j = right;     <span class="comment">// right</span></span><br><span class="line">    <span class="keyword">int</span> temp = arr[left];  <span class="comment">// temp 为选取的基准值</span></span><br><span class="line">    <span class="comment">// 遍历数组，找到小于基准值和大于基准值的数</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>( arr[i] &lt; temp )</span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">while</span>( arr[j] &gt; temp )</span><br><span class="line">            j--;</span><br><span class="line">        <span class="keyword">if</span>( i &lt; j)</span><br><span class="line">            swap(arr[i++],arr[j--]);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            i++;   <span class="comment">// i=j 为了跳出循环 </span></span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr[j],arr[left]);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>* arr,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left&gt;right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> j = partition(arr,left,right);</span><br><span class="line">    quickSort(arr,left,j<span class="number">-1</span>);</span><br><span class="line">    quickSort(arr,j+<span class="number">1</span>,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/18/matlab/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>matlab</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        <li> <a href="https://hexo.io/zh-cn/docs/" target="_blank">Hexo_doc</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
