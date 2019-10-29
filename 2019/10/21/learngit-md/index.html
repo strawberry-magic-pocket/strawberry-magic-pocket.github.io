@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>git 学习总结 | Gina&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Gina Mu">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "black-grey",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=..."></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '...');
+</script>
+<!--baidu_analytics-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?...";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/family.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png"></a></div>
+    <span>2019-10-21</span>
+    <h2>git 学习总结</h2>
+    
+    <div class="social-links">
+<a href="https://github.com/strawberry-magic-pocket" target="_blank"><i class="fa fa-github fa-fw"></i></a><a href="https://weibo.com/6183668014/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>汇总 git 的常用功能及实现语句</p>
+<a id="more"></a>
+<h1 id="一、创建版本库"><a href="#一、创建版本库" class="headerlink" title="一、创建版本库"></a>一、创建版本库</h1><p>首先在自己的电脑上选择一个合适的位置创建一个空目录</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir learngit</span><br><span class="line">cd learngit </span><br><span class="line">pwd learngit   <span class="comment">// 显示当前目录的绝对路径</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 git init 命令将这个目录变成Git可以管理的仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>此时文件夹下会多出一个 <strong><em>.git</em></strong>文件，此目录用来跟踪管理版本库。<br>此目录默认为隐藏，可以使用 ls -ah 指令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -ah  // 查看隐藏目录</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、将文件添加到版本库"><a href="#二、将文件添加到版本库" class="headerlink" title="二、将文件添加到版本库"></a>二、将文件添加到版本库</h1><p>首先在learngit目录下（子目录）也行，创建新文件<br>第一步，将文件添加到仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add + 新文件名称（含拓展名)</span><br><span class="line"></span><br><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>第二步，将文件提交到仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;###&quot; </span><br><span class="line"></span><br><span class="line">git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+
+<p>-m 后面输入的是本次提交的说明，可以输入任何内容，最好是和本次提交相关的，有意义的内容，方便之后从历史记录中找到记录并修改。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status  // 获取仓库当前的状态</span><br><span class="line">git diff    // 查看具体的修改内容</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="三、文件操作"><a href="#三、文件操作" class="headerlink" title="三、文件操作"></a>三、文件操作</h1><h2 id="3-1-版本回退"><a href="#3-1-版本回退" class="headerlink" title="3.1 版本回退"></a>3.1 版本回退</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log  // 查看从最近到最远的提交日志</span><br><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure>
+
+<p>得到提交版本的记录以及版本号， Head – 当前版本， Head^ – 上一个版本 ， Head^^ – 上上个版本 Head-100 – 往上100个版本<br>版本回退：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard Head^  // 回退到上一个版本</span><br><span class="line">git reset --hard &lt;commit id&gt; // 回退到 commit id 对应的版本</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog  // 可以查看历史命令的版本号，以确定回到哪个版本</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-管理修改"><a href="#3-2-管理修改" class="headerlink" title="3.2 管理修改"></a>3.2 管理修改</h2><p>首先区分 <strong>工作区</strong>和<strong>暂存区</strong>，<br>工作区即当前目录，在电脑上可以看到的目录<br>暂存区是 git add 之后，将文件保存在 暂存区<br>使用git commit -m <message> 命令之后会将文件从暂存取保存至版本库<br>因此，一般流程为：<br>创建文件 –&gt; git add –&gt; 第一次修改文件 –&gt; git add –&gt; 第二次修改文件 –&gt; git add –&gt; git commit<br>每次修改之后都要将修改文件提交到暂存区，再提交至版本库。</message></p>
+<h2 id="3-3-撤销修改"><a href="#3-3-撤销修改" class="headerlink" title="3.3 撤销修改"></a>3.3 撤销修改</h2><p>场景一： 只是在工作区修改了文件，发现修改的不对，想恢复至修改前，可以从版本库获得最近版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>场景二： 不仅在工作区作了修改，还使用 git add 指令将文件提交到了暂存区，但在 git commit 之前发现了，可以使用 git reset 撤销暂存区的修改，退回到工作区，之后再调用 git checkout – readme.txt 丢弃工作区的修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD &lt;file&gt;</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD readme.txt</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>场景3: 已经使用 git commit 命令将修改提交到了版本库，但是还没有推送到远程库，可以使用版本回退 –&gt; 撤销修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD^  // 先进行版本回退，</span><br><span class="line">git reset HEAD &lt;file&gt; // 撤销缓存区的修改</span><br><span class="line">git checkout -- readme.txt // 撤销工作区的修改</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-删除文件"><a href="#3-4-删除文件" class="headerlink" title="3.4 删除文件"></a>3.4 删除文件</h2><p>将工作区的文件删除（可以直接在文件管理器中将文件删除，也可以在终端调用 rm <filename> 指令删除文件</filename></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add test.txt     // 将test.txt文件从工作区添加至暂存区</span><br><span class="line">git commit -m &quot;add test.txt&quot;  // 上传test.txt文件，将修改提交至版本库</span><br><span class="line">rm test.txt      // 将test.txt文件从工作区删除</span><br></pre></td></tr></table></figure>
+
+<p>场景一：需要从版本库中删除test.txt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm test.txt  // 从版本库中删除test.txt文件</span><br><span class="line">git commit -m &quot;remove test.txt&quot;  //</span><br></pre></td></tr></table></figure>
+
+<p>场景二：误删了工作区的test.txt文件，但因为版本库中还有该文件，所以可以将文件从版本库中恢复，并且是恢复到最新版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+
+<p>git checkout 是用版本库里的文件替换工作区的版本，所以无论是修改还是删除，都可以“一件还原”。<br>如果说已经执行了场景一中的git commit操作，即已经将文件从版本库中删除了，只要没有上传远程库，仍然可以复原。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git add test.txt   // 将test.txt文件添加至暂存区</span><br><span class="line">git commit -m &quot;add test.txt&quot; // 将test.txt保存至版本库</span><br><span class="line">rm test.txt  // 将test.txt文件从工作区中删除</span><br><span class="line"></span><br><span class="line">git checkout -- test.txt  // 使用checkout语句直接从版本库中将test.txt的最新版本恢复至工作区</span><br><span class="line"></span><br><span class="line">git rm test.txt  // 将文件从版本库中删除</span><br><span class="line">git commit -m &quot;remove test.txt&quot; // 确认删除，并更新文件修改信息</span><br><span class="line">git reset HEAD^  // 恢复至上一级</span><br><span class="line">git checkout -- test.txt // 将test.txt文件的最新版本恢复至工作区</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、远程仓库"><a href="#四、远程仓库" class="headerlink" title="四、远程仓库"></a>四、远程仓库</h1><p>Git是分布式版本控制仓库，同一个Git仓库可以分布到不同的机器上。<br>需要找一台电脑充当“服务器”的角色，每天24h开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑，并且可以各自把各自的提交推送到服务器，也可以从服务器拉取别人的提交。<br>Github – 提供Git仓库托管服务，只要注册一个Github账号，就可以免费获得Git远程仓库。</p>
+<div class="note success">
+            <h3 id="自己的理解"><a href="#自己的理解" class="headerlink" title="自己的理解"></a>自己的理解</h3><ol><li>github 可以提供仓库托管服务，可以免费获得Git远程仓库</li><li>我们可以将自己的本地文件提交至远程仓库，并且记录每次对文件的更改</li><li>其他用户也可以访问远程仓库下载文件，并且对文件进行修改后重新进行提交，每次的提交都是公开的。</li></ol>
+          </div>
+<p>本地的Git仓库和Github仓库之间的传输是通过SSH加密的，需要进行设置</p>
+<h2 id="git-生成并添加SSH-Key"><a href="#git-生成并添加SSH-Key" class="headerlink" title="git 生成并添加SSH Key"></a>git 生成并添加SSH Key</h2><p>第一步，进入用户目录下的.ssh文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">git config --global username &quot;Gina&quot;</span><br><span class="line">git config --global user.email &quot;example@163.com&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;example@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>.ssh文件夹下会生成两个文件 一个是以public rsa key命名的文件，另一个是以.pub结尾的文件。<br>第二步，需要在github界面添加“SSH Key”<br>github 通过SSH key识别用户，只需知道公钥就可以确认用户身份。GitHub允许添加多个ssh key，所以将每台电脑的Key都添加到github，就可以在每台电脑往github推送。<br>此外，<strong>在GitHub上免费托管的库，是公开的，不要将敏感信息放进去！</strong></p>
+<h2 id="4-1-添加远程仓库"><a href="#4-1-添加远程仓库" class="headerlink" title="4.1 添加远程仓库"></a>4.1 添加远程仓库</h2><p>第一步：登录GitHub，创建一个新的仓库 ” Create a new repository”<br>第二步：在本地仓库下运行指令，关联本地库和远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/strawberry-magic-pocket/learngit.git</span><br></pre></td></tr></table></figure>
+
+<p>第三步：将本地库的所有内容推送到远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master  // 第一次推送master分支的所有内容</span><br><span class="line"></span><br><span class="line">git push origin master   // 之后在本地作提交只需要执行这条指令推送最新修改</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-从远程库克隆"><a href="#4-2-从远程库克隆" class="headerlink" title="4.2 从远程库克隆"></a>4.2 从远程库克隆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone + 仓库地址</span><br></pre></td></tr></table></figure>
+
+<p>要克隆仓库，首先应该得到仓库的地址，然后使用 git clone 命令克隆。</p>
+<h1 id="五、分支管理"><a href="#五、分支管理" class="headerlink" title="五、分支管理"></a>五、分支管理</h1><h2 id="5-1-创建与合并分支"><a href="#5-1-创建与合并分支" class="headerlink" title="5.1 创建与合并分支"></a>5.1 创建与合并分支</h2><h4 id="首先，创建dev分支，并切换至dev分支"><a href="#首先，创建dev分支，并切换至dev分支" class="headerlink" title="首先，创建dev分支，并切换至dev分支"></a>首先，创建dev分支，并切换至dev分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
+
+<p>git checkout 命令加上-b参数表示创建并切换，相当于执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch dev</span><br><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="然后，使用git-branch-命令查看当前分支"><a href="#然后，使用git-branch-命令查看当前分支" class="headerlink" title="然后，使用git branch 命令查看当前分支"></a>然后，使用git branch 命令查看当前分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<p>git branch 命令会列出所有分支，当前分支前会标有 * 号。</p>
+<h4 id="然后就可以在dev分支上正常提交。"><a href="#然后就可以在dev分支上正常提交。" class="headerlink" title="然后就可以在dev分支上正常提交。"></a>然后就可以在dev分支上正常提交。</h4><p>例如，在readme.txt文件中添加内容“ Creating a new branch called dev”。并将该文件提交到dev分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch  // 查看当前分支，确定当前分支为dev</span><br><span class="line">git add readme.txt // 将修改后的readme.txt文件从工作区提交到缓存区</span><br><span class="line">git commit -m &quot;test branch dev&quot;  // 确认提交至版本库，并上传提交信息“test branch dev&quot;</span><br><span class="line">cat readme.txt  // 在当前分支下查看readme.txt文件</span><br></pre></td></tr></table></figure>
+
+<p>如果将分支切换回 master ，再查看readme.txt文件，是没有刚才添加的那句话的，因为那个提交是在dev分支上，当前master分支并没有变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master   // 将当前分支切换为 master</span><br><span class="line">cat readme.txt   // 查看master分支下的readme.txt文件，发现文件并没有改变</span><br></pre></td></tr></table></figure>
+
+<h4 id="所以我们需要将dev分支与master分支进行合并，使用-git-merge-命令"><a href="#所以我们需要将dev分支与master分支进行合并，使用-git-merge-命令" class="headerlink" title="所以我们需要将dev分支与master分支进行合并，使用 git merge 命令"></a>所以我们需要将dev分支与master分支进行合并，使用 git merge 命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge dev  // 指定dev分支与当前分支进行合并</span><br><span class="line">cat readme.txt // 合并后再次查看readme.txt文件内容</span><br></pre></td></tr></table></figure>
+
+<p>git merge 命令的信息：“Fast-forward” 指 此次合并为“快进模式”，即直接将master指向dev的当前提交，合并速度很快。</p>
+<h4 id="合并完成后，即可删除dev分支"><a href="#合并完成后，即可删除dev分支" class="headerlink" title="合并完成后，即可删除dev分支"></a>合并完成后，即可删除dev分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d dev  // 删除dev分支</span><br><span class="line">git branch  // 查看当前所有分支</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用新的命令切换分支"><a href="#使用新的命令切换分支" class="headerlink" title="使用新的命令切换分支"></a>使用新的命令切换分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git switch -c dev  // 创建并切换到新的dev分支</span><br><span class="line">git switch master  // 直接切换到已有的master分支</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git branch   // 查看分支</span><br><span class="line"></span><br><span class="line">git branch &lt;name&gt;  // 创建分支</span><br><span class="line">git checkout &lt;name&gt;  // 切换分支</span><br><span class="line">git switch &lt;name&gt;  // 切换分支</span><br><span class="line"></span><br><span class="line">git checkout -b &lt;name&gt; //  创建并切换至新的分支</span><br><span class="line">git switch -c &lt;name&gt;</span><br><span class="line"></span><br><span class="line">git merge &lt;name&gt; // 合并某分支到当前分支</span><br><span class="line"></span><br><span class="line">git branch -d &lt;name&gt; // 删除分支</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2-解决冲突"><a href="#5-2-解决冲突" class="headerlink" title="5.2 解决冲突"></a>5.2 解决冲突</h2><p><strong>什么时候会发生冲突？</strong><br>对一个文件进行了不同的修改，并且将修改分别提交到了两个分支上，进行两个分支合并的时候，会发生分支冲突。<br>git会标记出两个分支上作出的不同的修改，需要手动解决冲突，保留其一，再进行提交，完成分支合并。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br></pre></td></tr></table></figure>
+
+<p>可以看到分支合并图。</p>
+<h2 id="5-3-分支管理策略"><a href="#5-3-分支管理策略" class="headerlink" title="5.3 分支管理策略"></a>5.3 分支管理策略</h2><p>合并分支时，git会使用<strong>Fast Forward</strong>模式，但这种模式下，删除分支后会丢掉分支信息，使用git log查看记录时，不会保留合并信息，看不出是否为合并信息。<br>要保留合并信息，可以强制禁用fast forward模式，使用 –no-ff 方式进行分支合并，这样使用git log查看历史时，可以看出此处曾经做过合并。</p>
+<ol>
+<li><p>首先，创建并切换分支dev</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev  // 创建并切换分支dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改readme.txt文件，并提交一个新的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br><span class="line">git commit -m &quot;add merge&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换至master分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>准备合并分支，–no-ff 参数即表示禁用 Fast Froward 模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>git在合并时需要创建一条新的commit消息，所以需要添加参数-m，并将commit信息添加上去。</p>
+<ol>
+<li>合并之后使用git log 查看分支历史<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --prettry=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<div class="note success">
+            <h3 id="git-log-使用"><a href="#git-log-使用" class="headerlink" title="git log 使用"></a>git log 使用</h3><p>常用选项说明：<br>git log –pretty=oneline (only one line!) 只显示提交的哈希值和提交的commit信息<br>git log –authoe=”gina” 只显示gina的提交记录<br>git log –since=”2019.10.22”  只显示2019年10月22号之后的提交记录<br>git log –until=”2019.10.22”  只显示2019年10月22日之前的提交记录<br>如果要查询一个具体的时间段，可以将参数组合起来：<br>git log –since=”2019.10.22” –until=”2019.10.25”<br>git log –grep=’test‘ –oneline  查询commit信息中包含“test”的记录<br>git log –graph –oneline –decorate  显示分支合并信息，只显示commit信息，显示当前HEAD指针指向的分支的名称</p>
+          </div>
+
+<h2 id="5-4-bug分支"><a href="#5-4-bug分支" class="headerlink" title="5.4 bug分支"></a>5.4 bug分支</h2><ul>
+<li>修复bug时，通过创建新的bug分支进行修复，然后合并，最后删除</li>
+<li>当手头工作没有完成时，先把工作现场保存一下，再去修复bug，修复后再恢复工作现场，且在master分支上修复的bug可以直接复制到dev分支上，而不需要重复修改。<br>具体流程：<br>当正在dev分支上工作时，收到一个代号为101的bug，可以创建一个分支issue-101来修复bug,但是当前dev的工作还不能提交，此时，可以执行 git stash 把当前工作现场储存起来，等修复了bug再恢复现场<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git statsh  // 存储当前工作现场</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>存储当前工作现场后可以使用 git status 指令查看当前状态，确认一下现场是“干净”的。<br>之后开始进行bug修复：<br>第一步，确定在哪个分支上修复bug，并从该分支上创建临时分支。<br>   e.g. 假设需要在master分支上修复bug，就从master分支创建临时分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master  // 切换当前分支为master分支</span><br><span class="line">git checkout -b issue-101  // 创建临时分支并转至该分支</span><br></pre></td></tr></table></figure>
+
+<p>修复bug,并提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br><span class="line">git commit -m &quot;fix bug 101&quot;</span><br></pre></td></tr></table></figure>
+
+<p>修复完成后，切换至master分支，并完成合并，最后删除issue-101分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master  // 切换至master分支</span><br><span class="line">git merge --no-ff -m &quot;merged bug fix 101&quot; issue-101  // 合并issue-101分支至master分支</span><br><span class="line">git branch -d issue-101  // 删除issue-101分支</span><br></pre></td></tr></table></figure>
+
+<p>修复完bug后，可以切换回dev分支接着工作了。<br>需要进行现场修复，恢复现场的方式有两种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">方式一：</span><br><span class="line">git stash apply  // 恢复现场，但stash中的内容不删除</span><br><span class="line">git stash drop  // 删除stash中的内容</span><br><span class="line"></span><br><span class="line">方式二：</span><br><span class="line">git stash pop  // 恢复现场的同时把stash中的内容也删除了</span><br><span class="line"></span><br><span class="line">git stash list // 可以查看stash中的内容</span><br><span class="line">// 当存储了多条 stash 时，可以先用git stash list 指令查看，然后使用</span><br><span class="line">git stash apply stash@(0) 恢复特定的stash</span><br></pre></td></tr></table></figure>
+
+<p>但bug可能同样存在于dev分支，所以，要修复dev上的bug 只需将fix bug 101这条指令复制到dev分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev  // 切换当前分支为dev</span><br><span class="line">git cherry-pick ****  // 复制一个特定的提交到当前分支，其中****为修复分支提交到记录中的哈希值</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-5-feature-分支"><a href="#5-5-feature-分支" class="headerlink" title="5.5 feature 分支"></a>5.5 feature 分支</h2><p>在软件开发中，开发一个新的功能，最好新建一个分支，如果要丢弃一个没有被合并过的分支，可以通过git branch -D dev 强行删除。</p>
+<h2 id="5-6-如何删除已经提交至远程库的分支？"><a href="#5-6-如何删除已经提交至远程库的分支？" class="headerlink" title="5.6 如何删除已经提交至远程库的分支？"></a>5.6 如何删除已经提交至远程库的分支？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev  // 创建新的分支 dev</span><br><span class="line">git push origin dev  // 提交分支dev至远程库</span><br><span class="line"></span><br><span class="line">git branch -d dev   // 删除分支dev</span><br><span class="line">git branch -r -d dev // 删除远程分支</span><br><span class="line">git push origin :dev // 提交至远程库</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/snow.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/frozen.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/29/Algorithm/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>《算法图解》学习笔记</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Gina's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Search..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="./images/Tong1.png" data-original="/images/Tong1.png" alt="Gina Mu"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Gina Mu</p>
+          <span class="tagline">可可爱爱</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        <li> <a href="https://hexo.io/zh-cn/docs/" target="_blank">Hexo_doc</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/local.search.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
